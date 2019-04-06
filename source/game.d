@@ -10,28 +10,57 @@ enum Direction : Coordinate {
     DOWN = Coordinate(0, 1),
     UP = Coordinate(0, -1),
     LEFT = Coordinate(-1, 0),
-    RIGHT = Coordinate(1, 0)
+    RIGHT = Coordinate(1, 0),
+    NONE = Coordinate(0, 0)
 }
 
 class Snake {
-    private Coordinate[] parts;
-    private Direction direction;
+    private int x_max;
+    private int y_max;
 
-    this(Coordinate start, Direction dir) {
+    private Coordinate[] parts;
+    public Direction direction;
+
+    this(int x_max, int y_max, Coordinate start, Direction dir) {
+        this.x_max = x_max;
+        this.y_max = y_max;
         parts ~= start;
         direction = dir;
     }
 
     void changeDir(Direction dir) {
-        direction = dir;
+        if (dir != Direction.NONE) {
+            direction = dir;
+        }
     }
 
     void move(bool grow) {
         Coordinate moveTo = Coordinate(parts[0].x + direction.x, parts[0].y + direction.y);
         if (!grow) {
-            parts = parts[0 .. $-1]; // Slice 2nd to last
+            parts = parts[0 .. $-1];
         }
         parts = moveTo ~ parts;
+    }
+
+    bool checkGameOver() {
+        bool gameOver = false;
+
+        // Out of bounds
+        if (getHead().x > x_max || getHead.x < 0) {
+            gameOver = true;
+        } else if (getHead().y > y_max || getHead.y < 0) {
+            gameOver = true;
+        } else {
+            // Collision with self
+            foreach (i, firstPart; getParts()) {
+                foreach (j, secondPart; getParts()) {
+                    if (i != j && firstPart == secondPart) {
+                        gameOver = true;
+                    }
+                }
+            }
+        }
+        return gameOver;
     }
 
     Coordinate getHead() {
