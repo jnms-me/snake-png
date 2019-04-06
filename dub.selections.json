@@ -1,0 +1,7 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"imageformats": "7.0.0",
+		"ncurses": "~master"
+	}
+}

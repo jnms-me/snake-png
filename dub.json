@@ -1,0 +1,13 @@
+{
+	"authors": [
+		"Jonas"
+	],
+	"copyright": "Copyright © 2019, Jonas",
+	"dependencies": {
+		"imageformats": "~>7.0.0",
+		"ncurses": "~master"
+	},
+	"description": "Snake on an image",
+	"license": "GPLv2",
+	"name": "snake"
+}
