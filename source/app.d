@@ -5,9 +5,8 @@ import graphics;
 import input;
 import network;
 
-void main() {
+void main(string[] args) {
     initInput();
-
 
     // Needed to read image size
     IFImage img = read_image("background.png", 0);
@@ -33,6 +32,8 @@ void main() {
         }
 
         graphics.draw();
-        sendImage("localhost:8080");
+
+        if (args.length == 2)
+            sendImage(args[1]);
     }
 }
