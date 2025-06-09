@@ -5,7 +5,7 @@
 	"copyright": "Copyright © 2019, Jonas",
 	"dependencies": {
 		"imageformats": "~>7.0.0",
-		"ncurses": "~master"
+		"ncurses": "~>1.0.0"
 	},
 	"description": "Snake on an image",
 	"license": "GPLv2",
